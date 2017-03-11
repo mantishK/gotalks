@@ -1,0 +1,23 @@
+GET /todo/5
+
+200
+{
+  "status": "ok",
+  "Content": "ABC"
+}
+
+type Result struct {
+  Status string,
+  Content float32
+}
+
+func divide(a, b int) (r Result){
+  if b == 0 {
+    r.Status = "error"
+  }
+  else {
+    r.Status = "ok"
+    r.Content = a / b
+  }
+  return
+}

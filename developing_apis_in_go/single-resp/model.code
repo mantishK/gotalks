@@ -1,0 +1,22 @@
+struct Todo {
+  UserID int
+  Content string
+  Created DateTime
+  Modified DateTime
+}
+
+func (t *Todo) Get() Todo {
+  ....
+}
+
+func (t *Todo) Create() error {
+  ...
+}
+
+func (t *Todo) Update() error {
+  ...
+}
+
+func (t *Todo) Delete() error {
+  ...
+}

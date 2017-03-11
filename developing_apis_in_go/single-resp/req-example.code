@@ -1,0 +1,21 @@
+GET /todo/5
+
+output:
+{
+  "id": 5,
+  "content": "Run errands",
+  "user_id": 62,
+  "pending_reminders": [
+    2, 4, 6, 8
+  ],
+  "user_hits": {...},
+  "ads": {..},
+  "recently_closed": [...],
+  "next_screen": ""
+}
+
+
+
+func add(a, b int) int {
+  return a+b, a-b, a*b, a/b
+}

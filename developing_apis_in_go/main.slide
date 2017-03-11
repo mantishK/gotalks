@@ -1,0 +1,161 @@
+Developing APIs in Go
+11 March 2017
+
+Mantesh
+http://mantish.com/
+https://medium.com/@kumarmantesh/
+@kumarmantesh
+
+* What do I do?
+
+- Senior Software Engineer @EdgeNetworks
+- Python (after sunrise)
+- Go/Android/Js (after sunset)
+.link http://www.filmtwine.com www.filmtwine.com
+ 
+* Agenda
+- What are web APIs?
+- Common mistakes
+- Elegant ways to solve them
+
+* What is an API?
+
+"In computer programming, an application programming interface (API) is a set of subroutine definitions, protocols, and tools for building application software" 
+~ Wikipedia
+
+* What is a web API?
+"A web API is an API for either a web server or a web browser" ~Wikipedia
+
+* What is REST?
+
+* REST
+
+REST is one of the architectural styles defined by Roy Fielding 
+which is too hard to follow
+because of the deadline.
+
+* Single Responsibility
+
+* Single Responsibility
+- Design based on Resources, not on screens or content of web-pages
+- URL should explain what resource is being dealt with
+- HTTP methods should determine the type of operation
+- Should do one thing
+- More APIs, less work on each
+
+* Single Responsibility 
+.code single-resp/req-example.code
+
+* Single Responsibility
+     
+"Premature optimization is the root of all evil (or at least most of it) in programming.""
+~ Donald Knuth
+
+* Single Responsibility
+models/todo.go
+.code single-resp/model.code
+
+* Single Responsibility
+handlers/todo.go
+.code single-resp/handler.code
+
+* Single Responsibility
+Summary
+Don't
+.image single-resp/squeeze.gif
+
+* HTTP Status Codes
+
+* HTTP Status Codes
+- APIs are not just about 200 OK
+- It's not ok to be 200 OK all the time
+
+* HTTP Status Codes
+4XX for client error
+
+400 - Bad Request
+401 - Unauthorized
+403 - Forbidden
+404 - Not Found
+
+* HTTP Status Codes
+5XX for server errors
+
+500 - Internal Server Error
+
+* HTTP Status Codes
+Bad API
+.code http-status/bad.code
+
+* HTTP Status Codes
+Good API
+.code http-status/good.code
+
+* HTTP Status Codes
+Why is 200 always bad?
+
+`Cache-Control: max-age=259200`
+
+* HTTP Status Codes
+Summary
+Don't
+.image http-status/surprise.gif
+
+* Errors
+
+* Errors
+- Errors are as important as successful results
+- Make them obvious
+- Make them descriptive and helpful (At least in the dev mode)
+- Have an error ID
+
+* Errors
+Bad API
+.code errors/bad.code
+
+* Errors
+Good API
+.code errors/good.code
+
+* Errors
+apperror/apperror.go
+.code errors/app-error.code
+
+* Errors
+reply/reply.go
+.code errors/reply.code
+
+* Errors
+Summary
+Don't
+.image errors/confuse.gif
+
+* Input Validations
+
+* Input Validations
+- Always validate inputs
+- Validations help you convert server errors to client errors
+
+* Input Validations
+.code input-validation/interface.code
+
+* Input Validations
+handler/todo.go
+.code input-validation/interface-usage.code
+
+* Configurations
+
+* Configurations
+- What changes according to env, has to be configurable
+- Keep the config file out of your repo
+- Make the configs overridable
+
+* Configurations
+Demo
+
+* Code
+.link https://github.com/mantishK/galore mantishK/galore
+
+
+* References
+.link https://www.youtube.com/watch?v=tIm8UkSf6RA  Building APIs ~ Mat Ryer @Golang UK Conference 

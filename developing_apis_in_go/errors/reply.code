@@ -1,0 +1,10 @@
+func Err(w http.ResponseWriter, e *ae.Error) {
+  if env, ok := config.GetString("app_env"); ok && env == "prod" {
+    e.Log = ""
+  }
+  jsonData, err := json.Marshal(e)
+  if err != nil {
+    fmt.Fprint(w, "Error")
+  }
+  http.Error(w, string(jsonData), e.HttpStatus)
+}

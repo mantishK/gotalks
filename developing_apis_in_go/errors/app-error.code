@@ -1,0 +1,20 @@
+type Error struct {
+	Message    string `json:"string"`
+	ID         int    `json:"id"`
+	HttpStatus int    `json:"-"`
+	Log        string `json:"log"`
+}
+
+const (
+	CodeDB = iota + 1
+	CodeRequired
+	CodeInvalidInput
+)
+
+func DB(message string, err error) *Error {
+	if len(message) == 0 {
+		message = "Some error occured while querying database. Please try later."
+	}
+	return &Error{ID: CodeDB, Message: message, HttpStatus: http.StatusInternalServerError, 
+    Log: err.Error()}
+}

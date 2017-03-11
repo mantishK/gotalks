@@ -1,0 +1,19 @@
+GET /todo/5
+
+200
+{
+  "Content": "ABC"
+}
+
+404 Not Found
+{}
+
+
+func divide(a, b int) (c float32, err error){
+  if b == 0 {
+    err = errors.New("Division by zero")
+    return
+  }
+  c = a / b
+  return
+}

@@ -1,0 +1,24 @@
+GET /todo/5
+
+500 Bad Request
+{
+  "id": 1,
+  "string": "DB Error",
+  "log": "Failed to connect to Postgres. Connection time out"
+}
+
+500 Bad Request
+{
+  "id": 1,
+  "string": "DB Error",
+  "log": ""
+}
+
+func divide(a, b float32) (c float32, err error){
+  if b == 0 {
+    err = errors.New("Division by zero")
+    return
+  }
+  c = a / b
+  return
+}

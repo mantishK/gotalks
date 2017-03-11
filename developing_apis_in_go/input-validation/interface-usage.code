@@ -1,0 +1,19 @@
+type todoReqBody struct {
+  Content string `json:"content"`
+}
+
+func (rb *todoReqBody) OK() *ae.Error {
+  if len(rb.Content) == 0 {
+    return ae.Required("", "content")
+  }
+  return nil
+}
+
+func PostTodo(w http.ResponseWriter, r *http.Request) {
+  var rb todoReqBody
+  aErr := decode(r, &rb)
+  if aErr != nil {
+    reply.Err(w, aErr)
+    return
+  }
+}

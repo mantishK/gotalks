@@ -1,0 +1,14 @@
+struct TodoReq{
+  Content string `json:"content"`
+}
+
+func CreateTodo(w http.ResponseWriter, r *http.Request) {
+  
+  ...
+
+  t := Todo{}
+  t.Content = req.Content
+  err := t.Create()
+
+  ...
+}
